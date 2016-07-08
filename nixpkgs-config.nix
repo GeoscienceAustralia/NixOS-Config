@@ -68,6 +68,7 @@
         openjdk
         maven
         eclipse-ee-46
+        gradle
       ];
     };
 
