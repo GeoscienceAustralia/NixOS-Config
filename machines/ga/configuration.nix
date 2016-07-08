@@ -6,8 +6,8 @@
 
 let
   user = {
-    username = "guest";
-    unumber = "u00000";
+    username = "simon";
+    unumber = "u25387";
   };
 
 in
@@ -55,15 +55,17 @@ in
   # and put your password into /etc/cntlm.password.
   # Remember to 'chmod 0600 /etc/cntlm.password'.
 
-  # services.cntlm = {
-  #   enable = true;
-  #   username = user.unumber;
-  #   domain = "PROD";
-  #   password = import /etc/cntlm.password;
-  #   proxy = ["proxy.ga.gov.au:8080"];
-  #   port = [3128];
-  #   netbios_hostname = "127.0.0.1";
-  # };
+
+   services.cntlm = {
+     enable = true;
+     username = user.unumber;
+     domain = "PROD";
+     password = "";
+     extraConfig = builtins.readFile /etc/cntlm.password;
+     proxy = ["proxy.ga.gov.au:8080"];
+     port = [3128];
+     netbios_hostname = "127.0.0.1";
+   };
 
   services.openssh.enable = true;
 
