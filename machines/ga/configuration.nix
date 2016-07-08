@@ -20,8 +20,8 @@
   boot.loader.grub.device = "/dev/sda";
 
   networking.hostName = "ga";
-  # networking.proxy.default = "http://sun-web-intdev.ga.gov.au:2710";
-  networking.proxy.default = "http://localhost:3128";
+  networking.proxy.default = "http://sun-web-intdev.ga.gov.au:2710";
+  # networking.proxy.default = "http://localhost:3128";
 
   time.timeZone = "Australia/Canberra";
 
@@ -32,6 +32,8 @@
   environment.systemPackages = with pkgs; [
     systemToolsEnv
     pythonEnv
+    terminator
+    chromium
   ];
 
   # Use your own CNTLM. Set username to your u-number
@@ -68,11 +70,11 @@
   # services.xserver.desktopManager.kde4.enable = true;
 
   # Define your user account. Don't forget to set your password with ‘sudo passwd username’.
-  # users.extraUsers.username = {
-  #    isNormalUser = true;
-  #    uid = 1000;
-  #    extraGroups = [ "wheel" "tomcat" ];
-  # };
+  users.extraUsers.brooke = {
+      isNormalUser = true;
+      uid = 1000;
+      extraGroups = [ "wheel" "tomcat" ];
+  };
 
   # The NixOS release to be compatible with for stateful data such as databases.
   system.stateVersion = "16.03";
