@@ -32,6 +32,7 @@
   environment.systemPackages = with pkgs; [
     systemToolsEnv
     pythonEnv
+    squirrelsql
   ];
 
   # Use your own CNTLM. Set username to your u-number
