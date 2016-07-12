@@ -87,6 +87,11 @@
     windowManager.xmonad.enableContribAndExtras = true;
   };
 
+  services.tomcat = {
+    enable = true;
+    package = pkgs.tomcat8;
+  };
+
   security.sudo = {
     enable = true;
     wheelNeedsPassword = false;
@@ -97,7 +102,7 @@
     isNormalUser = true;
     home = "/home/lbodor";
     description = "Lazar Bodor";
-    extraGroups = [ "docker" "wheel" ];
+    extraGroups = [ "docker" "tomcat" "wheel" ];
   };
 
   # The NixOS release to be compatible with for stateful data such as databases.
