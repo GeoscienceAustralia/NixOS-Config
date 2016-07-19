@@ -81,6 +81,20 @@
       ];
     };
 
+    buildTypeScriptEnv = { nodeVersion ? "default" }:
+      let
+        np = if nodeVersion == "default"
+          then super.nodePackages
+          else lib.getAttrFromPath [("nodePackages_" + nodeVersion)] super;
+      in super.buildEnv {
+        name = "typeScriptDevEnv-${nodeVersion}";
+        paths = [
+          np.typescript
+        ];
+      };
+
+    typeScriptEnv = buildTypeScriptEnv { nodeVersion = "4_x"; };
+
     buildHaskellEnv = { compiler ? "default" }:
       let
         hp = if compiler == "default"
