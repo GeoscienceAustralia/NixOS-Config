@@ -27,6 +27,10 @@
 
   nixpkgs.config = import ../../nixpkgs-config.nix;
 
+  # Set SSL_CERT_FILE, so that nix-shell doesn't make it up.
+  # See https://github.com/NixOS/nixpkgs/issues/13744.
+  environment.variables."SSL_CERT_FILE" = "/etc/ssl/certs/ca-bundle.crt";
+
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
