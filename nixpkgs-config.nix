@@ -81,6 +81,13 @@
       ];
     };
 
+    awsEnv = with super; buildEnv {
+      name = "awsEnv";
+      paths = [
+        awscli
+      ];
+    };
+
     buildTypeScriptEnv = { nodeVersion ? "default" }:
       let
         np = if nodeVersion == "default"
