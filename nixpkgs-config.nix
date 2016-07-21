@@ -93,10 +93,15 @@
         np = if nodeVersion == "default"
           then super.nodePackages
           else lib.getAttrFromPath [("nodePackages_" + nodeVersion)] super;
+        node = if nodeVersion == "default"
+          then super.nodejs
+          else lib.getAttrFromPath [("nodejs-" + nodeVersion)] super;
       in super.buildEnv {
         name = "typeScriptDevEnv-${nodeVersion}";
         paths = [
+          node
           np.typescript
+          np.gulp
         ];
       };
 
