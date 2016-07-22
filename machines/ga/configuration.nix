@@ -4,6 +4,14 @@
 
 { config, pkgs, ... }:
 
+let
+  user = {
+    username = "guest";
+    unumber = "u00000";
+  };
+
+in
+
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -45,7 +53,7 @@
 
   # services.cntlm = {
   #   enable = true;
-  #   username = "your windows u-number";
+  #   username = user.unumber;
   #   domain = "PROD";
   #   password = import /etc/cntlm.password;
   #   proxy = ["proxy.ga.gov.au:8080"];
@@ -73,10 +81,12 @@
   # services.xserver.desktopManager.kde4.enable = true;
 
   # Define your user account. Don't forget to set your password with ‘sudo passwd username’.
-  # users.extraUsers.username = {
-  #    isNormalUser = true;
-  #    uid = 1000;
-  #    extraGroups = [ "wheel" "tomcat" ];
+  # users.extraUsers = {
+  #   ${user.username} = {
+  #      isNormalUser = true;
+  #      uid = 1000;
+  #      extraGroups = [ "wheel" "tomcat" ];
+  #   };
   # };
 
   # The NixOS release to be compatible with for stateful data such as databases.
