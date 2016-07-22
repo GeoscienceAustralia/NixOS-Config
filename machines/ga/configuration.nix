@@ -89,6 +89,22 @@ in
   #   };
   # };
 
+  system.activationScripts = {
+    dotfiles = pkgs.lib.stringAfter [ "users" ]
+      ''
+      # Import /etc/nixos/nixpkgs-config.nix from users private ~/.nixpkgs/config.nix
+      # so that nix-env commands can find packages defined globally in nixpkgs-config.nix.
+      if [ ! -e ~${user.username}/.nixpkgs/config.nix ]; then
+        mkdir -p ~${user.username}/.nixpkgs
+        cat > ~${user.username}/.nixpkgs/config.nix << EOF
+      import /etc/nixos/nixpkgs-config.nix // {
+        allowBroken = false;
+      }
+      EOF
+      fi
+      '';
+  };
+
   # The NixOS release to be compatible with for stateful data such as databases.
   system.stateVersion = "16.03";
   system.autoUpgrade.enable = true;
