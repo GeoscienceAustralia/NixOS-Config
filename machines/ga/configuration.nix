@@ -49,8 +49,9 @@ in
   environment.systemPackages = with pkgs; [
     systemToolsEnv
     slack
-    # pythonEnv
-    # squirrelsql
+    pythonEnv
+    squirrelsql
+    chromium
   ];
 
   # Use your own CNTLM. Set username to your u-number
