@@ -47,8 +47,9 @@ in
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
     systemToolsEnv
-    # pythonEnv
-    # squirrelsql
+    pythonEnv
+    squirrelsql
+    terminator
   ];
 
   # Use your own CNTLM. Set username to your u-number
