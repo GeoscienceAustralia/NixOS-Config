@@ -16,8 +16,8 @@ in
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ../../mixins/postgres/postgres-service.nix
-      ../../mixins/java-env.nix
+      # ../../mixins/postgres/postgres-service.nix
+      # ../../mixins/java-env.nix
     ];
 
   # Use the GRUB 2 boot loader.
@@ -44,8 +44,8 @@ in
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
     systemToolsEnv
-    pythonEnv
-    squirrelsql
+    # pythonEnv
+    # squirrelsql
   ];
 
   # Use your own CNTLM. Set username to your u-number
@@ -67,10 +67,10 @@ in
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  services.tomcat = {
-    enable = true;
-    package = pkgs.tomcat8;
-  };
+  # services.tomcat = {
+  #   enable = true;
+  #   package = pkgs.tomcat8;
+  # };
 
   security.sudo = {
     enable = true;
@@ -86,7 +86,7 @@ in
   #   ${user.username} = {
   #      isNormalUser = true;
   #      uid = 1000;
-  #      extraGroups = [ "wheel" "tomcat" ];
+  #      extraGroups = [ "wheel" ];
   #   };
   # };
 
