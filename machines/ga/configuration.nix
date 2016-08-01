@@ -81,14 +81,15 @@ in
   # services.xserver.displayManager.kdm.enable = true;
   # services.xserver.desktopManager.kde4.enable = true;
 
-  # Define your user account. Don't forget to set your password with ‘sudo passwd username’.
-  # users.extraUsers = {
-  #   ${user.username} = {
-  #      isNormalUser = true;
-  #      uid = 1000;
-  #      extraGroups = [ "wheel" ];
-  #   };
-  # };
+  # Define your user account. Don't forget to change your password.
+  users.extraUsers = {
+    ${user.username} = {
+      password = "change-me";
+      isNormalUser = true;
+      uid = 1000;
+      extraGroups = [ "wheel" ];
+    };
+  };
 
   system.activationScripts = {
     dotfiles = pkgs.lib.stringAfter [ "users" ]
@@ -103,6 +104,9 @@ in
       }
       EOF
       fi
+
+      # Handover /etc/nixos to ${user.username}
+      chown ${user.username}.users /etc/nixos
       '';
   };
 
