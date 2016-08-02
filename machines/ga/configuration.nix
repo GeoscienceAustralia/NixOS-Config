@@ -20,7 +20,7 @@ in
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       # ../../mixins/postgres/postgres-service.nix
-      # ../../mixins/java-env.nix
+      #../../mixins/java-env.nix
     ];
 
   virtualisation.docker.enable = true;
@@ -74,10 +74,10 @@ in
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # services.tomcat = {
-  #   enable = true;
-  #   package = pkgs.tomcat8;
-  # };
+  services.tomcat = {
+    enable = true;
+    package = pkgs.tomcat8;
+  };
 
   security.sudo = {
     enable = true;
@@ -94,7 +94,7 @@ in
       password = "change-me";
       isNormalUser = true;
       uid = 1000;
-      extraGroups = [ "wheel" "docker" ];
+      extraGroups = [ "wheel" "docker" "tomcat" ];
     };
   };
 
