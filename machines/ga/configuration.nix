@@ -28,8 +28,8 @@ in
   boot.loader.grub.device = "/dev/sda";
 
   networking.hostName = "ga";
-  # networking.proxy.default = "http://sun-web-intdev.ga.gov.au:2710";
-  networking.proxy.default = "http://localhost:3128";
+  networking.proxy.default = "http://sun-web-intdev.ga.gov.au:2710";
+  # networking.proxy.default = "http://localhost:3128";
 
   time.timeZone = "Australia/Canberra";
 
