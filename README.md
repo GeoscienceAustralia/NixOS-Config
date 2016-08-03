@@ -59,5 +59,9 @@ $ sudo nixos-rebuild switch             # Switch to the new configuration
 $ git push -f                           # push your rebased branch to GitHub.
 ```
 
+Periodically, you can apply the latest package updates.
 
-
+```
+$ sudo nix-channel --list               # check your package channel subscription
+$ sudo nixos-rebuild switch --upgrade   # update all installed packages
+```
