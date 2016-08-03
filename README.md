@@ -15,7 +15,7 @@ $ VBoxManager import nixos-16.03.1168.44b1d6b-x86_64-linux.ova
 ```
 ### Start the VM
 ```
-$ VBoxManager list vms                  # print the name and UUID of the imported the VM
+$ VBoxManager list vms                  # print the name and UUID of the imported VM
 $ VirtualBox --startvm <vmname|uuid>
 ```
 ### Login and customise the VM
@@ -32,17 +32,22 @@ $ passwd                                # change your password
 
 $ ssh-keygen                            # generate your private and public SSH keys
                                         # upload your public SSH key to GitHub
-                                       
-# use SSH instead of HTTPS 
+
+# switch to SSH
 $ git remote remove origin
 $ git remote add origin git@github.com:GeoscienceAustralia/nixos-config
 
-# commit your changes and push them to GitHub
+# commit and push to GitHub
 $ git add machine/ga/configuration.nix
 $ git commit -m"Customise"
 $ git push -u origin <your-branch>      # push your branch to GitHub
-
 ```
+
+### Study other developers' configurations
+At GA: https://github.com/GeoscienceAustralia/nixos-config/network
+
+Globally: http://www.google.com/search?q=github+configuration.nix
+
 ## Keeping Up-to-date
 
 Periodically, you can rebase your branch onto the latest changes from master.
