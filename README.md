@@ -1,5 +1,7 @@
 # nixos-config
 
+## About
+
 NixOS configuration files for VirtualBox and BYO development machines. See https://nixos.org.
 
 The machine defined in `machines/ga/configuration.nix` is continuously built
