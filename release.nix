@@ -1,3 +1,5 @@
+# origin: https://github.com/NixOS/nixpkgs/blob/ea9d390c1af028dcb8dfc630095ae7caafeba135/nixos/release.nix
+
 {
 
 # A bootable VirtualBox virtual appliance as an OVA file (i.e., packaged OVF).
