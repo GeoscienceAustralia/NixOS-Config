@@ -4,7 +4,8 @@
 ova =
   let
     evalConfig = import <nixpkgs/nixos/lib/eval-config.nix>;
-    makeDiskImage = import <nixpkgs/nixos/lib/make-disk-image.nix>;
+    # makeDiskImage = import <nixpkgs/nixos/lib/make-disk-image.nix>;
+    makeDiskImage = import ./make-disk-image.nix;
 
     config = (evalConfig {
       modules = [
