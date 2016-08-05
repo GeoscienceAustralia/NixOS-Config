@@ -13,6 +13,9 @@ let
 in
 
 {
+  # make user available to included modules
+  _module.args.user = user;
+
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
