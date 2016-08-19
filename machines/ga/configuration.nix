@@ -52,6 +52,7 @@ in
     pythonEnv
     squirrelsql
     chromium
+    typeScriptEnv
   ];
 
   # Use your own CNTLM. Set username to your u-number
