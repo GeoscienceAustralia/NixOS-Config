@@ -61,7 +61,7 @@
       </settings>
       EOF
 
-        chown ${user.username}.users ~${user.username}/.m2/settings.xml
+        chown -R ${user.username}.users ~${user.username}/.m2
       fi
       '';
   };
