@@ -106,7 +106,7 @@
         ];
       };
 
-    typeScriptEnv = buildTypeScriptEnv { nodeVersion = "4_x"; };
+    typeScriptEnv = buildTypeScriptEnv { nodeVersion = "6_x"; };
 
     buildHaskellEnv = { compiler ? "default" }:
       let
