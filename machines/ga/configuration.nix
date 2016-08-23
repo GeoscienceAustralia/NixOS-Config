@@ -51,6 +51,7 @@ in
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
     systemToolsEnv
+    typeScriptEnv
     # pythonEnv
     # squirrelsql
   ];
