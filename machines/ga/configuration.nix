@@ -36,6 +36,10 @@ in
 
   time.timeZone = "Australia/Canberra";
 
+  nix = {
+    nixPath = [ "/home/ffu/dev" "nixos-config=/etc/nixos/configuration.nix" ];
+  };
+
   nixpkgs.config = import ../../nixpkgs-config.nix;
 
   # Set SSL_CERT_FILE, so that nix-shell doesn't make it up.
