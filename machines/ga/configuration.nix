@@ -52,6 +52,7 @@ in
   environment.systemPackages = with pkgs; [
     systemToolsEnv
     typeScriptEnv
+    chromium
     # pythonEnv
     # squirrelsql
   ];
