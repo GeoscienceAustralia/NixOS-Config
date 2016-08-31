@@ -19,7 +19,7 @@ in
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      # ../../mixins/postgres/postgres-service.nix
+      ../../mixins/postgres/postgres-service.nix
       # ../../mixins/java-env.nix
     ];
 
