@@ -32,6 +32,7 @@ in
 
   networking.hostName = "ga";
   networking.proxy.default = "http://sun-web-intdev.ga.gov.au:2710";
+  networking.firewall.enable = false;
   # networking.proxy.default = "http://localhost:3128";
 
   time.timeZone = "Australia/Canberra";
