@@ -20,7 +20,7 @@ in
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ../../mixins/postgres/postgres-service.nix
-      # ../../mixins/java-env.nix
+      ../../mixins/java-env.nix
     ];
 
   # Use the GRUB 2 boot loader.
@@ -48,6 +48,7 @@ in
   environment.systemPackages = with pkgs; [
     systemToolsEnv
     slack
+    chromium
     # pythonEnv
     # squirrelsql
   ];
@@ -71,10 +72,10 @@ in
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # services.tomcat = {
-  #   enable = true;
-  #   package = pkgs.tomcat8;
-  # };
+  services.tomcat = {
+    enable = true;
+    package = pkgs.tomcat8;
+  };
 
   security.sudo = {
     enable = true;
