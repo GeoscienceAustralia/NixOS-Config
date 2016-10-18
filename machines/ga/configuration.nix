@@ -49,7 +49,7 @@ in
     systemToolsEnv
     slack
     # pythonEnv
-    # squirrelsql
+    squirrelsql
   ];
 
   # Use your own CNTLM. Set username to your u-number
