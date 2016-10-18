@@ -19,7 +19,7 @@
   virtualisation.docker.enable = true;
 
   # Virtual box host breaks sound and suspend
-  # virtualisation.virtualbox.host.enable = true;
+  virtualisation.virtualbox.host.enable = true;
 
   networking = {
     hostName = "io";
