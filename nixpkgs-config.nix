@@ -58,8 +58,8 @@
       paths = [
         ctags
         file
-        firefox
         fzf
+        firefox-beta-bin # compiled with gtk3
         gcc
         git
         gitAndTools.hub
