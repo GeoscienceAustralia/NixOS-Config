@@ -66,7 +66,10 @@ in
   #   netbios_hostname = "127.0.0.1";
   # };
 
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    forwardX11 = true;
+  };
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
