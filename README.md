@@ -39,6 +39,7 @@ $ ssh-keygen                            # generate your private and public SSH k
                                         # upload your public SSH key to GitHub
 
 # switch to SSH
+$ cd /etc/nixos
 $ git remote remove origin
 $ git remote add origin git@github.com:GeoscienceAustralia/nixos-config
 
