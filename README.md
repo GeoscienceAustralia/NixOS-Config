@@ -12,8 +12,8 @@ http://s3-ap-southeast-2.amazonaws.com/geodesy-nixos/.
 
 ### Download and import the latest OVF appliance
 ```
-$ wget http://s3-ap-southeast-2.amazonaws.com/geodesy-nixos/nixos-16.03.1168.44b1d6b-x86_64-linux.ova
-$ VBoxManager import nixos-16.03.1168.44b1d6b-x86_64-linux.ova
+$ wget http://s3-ap-southeast-2.amazonaws.com/geodesy-nixos/nixos-16.09.XXX-x86_64-linux.ova
+$ VBoxManager import nixos-16.09.XXX-x86_64-linux.ova
 ```
 ### Start the VM
 ```
@@ -67,6 +67,12 @@ $ git push -f                           # push your rebased branch to GitHub.
 Periodically, you can apply the latest package updates.
 
 ```
-$ sudo nix-channel --list               # check your package channel subscription
+$ sudo nix-channel --list               # check your nixpkgs channel subscription
 $ sudo nixos-rebuild switch --upgrade   # update all installed packages
+```
+
+Current nixpkgs substriction is to the latest stable channel, `nixos-16.09`.
+
+```
+$ sudo nix-channel --add https://nixos.org/channels/nixos-16.09 nixos
 ```

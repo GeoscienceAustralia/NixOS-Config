@@ -31,7 +31,7 @@ ova =
 
           echo "creating VirtualBox VM..."
           export HOME=$PWD
-          export PATH=${pkgs.linuxPackages.virtualbox}/bin:$PATH
+          export PATH=${pkgs.virtualbox}/bin:$PATH
           vmName="NixOS ${config.system.nixosLabel} (${pkgs.stdenv.system})"
           VBoxManage createvm --name "$vmName" --register \
             --ostype ${if pkgs.stdenv.system == "x86_64-linux" then "Linux26_64" else "Linux26"}

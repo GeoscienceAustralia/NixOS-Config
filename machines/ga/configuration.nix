@@ -66,7 +66,10 @@ in
   #   netbios_hostname = "127.0.0.1";
   # };
 
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    forwardX11 = true;
+  };
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -115,6 +118,6 @@ in
   };
 
   # The NixOS release to be compatible with for stateful data such as databases.
-  system.stateVersion = "16.03";
+  system.stateVersion = "16.09";
   system.autoUpgrade.enable = true;
 }
