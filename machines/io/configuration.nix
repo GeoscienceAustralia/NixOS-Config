@@ -57,6 +57,7 @@
     haskellPackages.xmonad-extras
     xorg.xbacklight
     squirrelsql
+    slack
   ];
 
   fonts = {
