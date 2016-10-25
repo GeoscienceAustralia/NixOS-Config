@@ -28,7 +28,7 @@ Some have reported an error about a driver can't be found.  The fix for this is 
 $ ssh -p 4022 guest@localhost           # password is "change-me"
 $ cd /etc/nixos
 $ git clone https://github.com/GeoscienceAustralia/nixos-config .
-$ ln -s machine/ga/configuration.nix
+$ ln -s machines/ga/configuration.nix
 $ git checkout -b <your-branch>
 $ vim configuration.nix                 # set your username, customise the configuration
 $ sudo nixos-rebuild switch             # build the new configuration and switch to it
@@ -39,11 +39,12 @@ $ ssh-keygen                            # generate your private and public SSH k
                                         # upload your public SSH key to GitHub
 
 # switch to SSH
+$ cd /etc/nixos
 $ git remote remove origin
 $ git remote add origin git@github.com:GeoscienceAustralia/nixos-config
 
 # commit and push to GitHub
-$ git add machine/ga/configuration.nix
+$ git add machines/ga/configuration.nix
 $ git commit -m"Customise"
 $ git push -u origin <your-branch>      # push your branch to GitHub
 ```
