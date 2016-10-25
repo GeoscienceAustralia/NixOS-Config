@@ -3,8 +3,7 @@
 {
   services.postgresql = {
     enable = true;
-    package = pkgs.postgresql94;
-    extraPlugins = [ (pkgs.postgis.override { postgresql = pkgs.postgresql94; }).v_2_1_4 ];
+    extraPlugins = [ pkgs.postgis.v_2_2_1 ];
     authentication =
       ''
         local all root ident
