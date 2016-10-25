@@ -20,9 +20,6 @@ $ VBoxManager import nixos-16.09.XXX-x86_64-linux.ova
 $ VBoxManager list vms                  # print the name and UUID of the imported VM
 $ VirtualBox --startvm <vmname|uuid>
 ```
-
-Some have reported an error about a driver can't be found.  The fix for this is to open the image in the Virtual Box app, go in to the Audio settings and changed to ``Windows Direct Sound`` and ``Intel HD Audio``.
-
 ### Login and customise the VM
 ```
 $ ssh -p 4022 guest@localhost           # password is "change-me"
