@@ -23,7 +23,6 @@ in
       # ../../mixins/java-env.nix
     ];
 
-  # Use the GRUB 2 boot loader.
   virtualisation.docker.enable = true;
   virtualisation.virtualbox.guest.enable = true;
   boot.initrd.checkJournalingFS = false;
