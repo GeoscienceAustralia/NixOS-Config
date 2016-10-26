@@ -24,6 +24,7 @@ in
     ];
 
   # Use the GRUB 2 boot loader.
+  virtualisation.docker.enable = true;
   virtualisation.virtualbox.guest.enable = true;
   boot.initrd.checkJournalingFS = false;
   boot.loader.grub.enable = true;
