@@ -50,6 +50,7 @@ in
     slack
     # pythonEnv
     # squirrelsql
+    terminator
   ];
 
   # Use your own CNTLM. Set username to your u-number
