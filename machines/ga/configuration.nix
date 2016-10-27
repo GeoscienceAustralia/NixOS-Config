@@ -94,7 +94,7 @@ in
       password = "change-me";
       isNormalUser = true;
       uid = 1000;
-      extraGroups = [ "wheel" ];
+      extraGroups = [ "wheel" "docker" ];
     };
   };
 
