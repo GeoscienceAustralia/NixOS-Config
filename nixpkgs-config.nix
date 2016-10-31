@@ -47,10 +47,12 @@
         git
         gitAndTools.hub
         gnumake
+        inetutils
         keychain
         nix-prefetch-scripts
         nix-repl
         nload
+        shellcheck
         telnet
         tmux
         tree
