@@ -22,6 +22,11 @@
       fsType = "vfat";
     };
 
+  fileSystems."/dos" =
+    { device = "/dev/nvme0n1p3";
+      fsType = "ntfs-3g";
+    };
+
   swapDevices = [ ];
 
   nix.maxJobs = lib.mkDefault 4;
