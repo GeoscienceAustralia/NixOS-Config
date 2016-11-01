@@ -53,7 +53,6 @@
         nix-repl
         nload
         shellcheck
-        telnet
         tmux
         tree
         unzip
