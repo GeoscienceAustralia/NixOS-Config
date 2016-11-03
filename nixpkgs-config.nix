@@ -49,6 +49,7 @@
         gitAndTools.hub
         gnumake
         inetutils
+        graphviz
         keychain
         nix-prefetch-scripts
         nix-repl
