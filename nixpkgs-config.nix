@@ -72,7 +72,7 @@
         maven
         eclipse-ee-46
         # idea.idea-ultimate
-        # idea.idea-community
+        idea.idea-community
         gradle
       ];
     };
