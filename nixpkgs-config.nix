@@ -80,7 +80,8 @@
     pythonEnv = with super; buildEnv {
       name = "pythonEnv";
       paths = [
-        python3
+        # python3
+        python2
       ];
     };
 
