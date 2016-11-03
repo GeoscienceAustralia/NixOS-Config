@@ -41,6 +41,7 @@
       name = "systemToolsEnv";
       paths = [
         ctags
+        doxygen
         file
         firefox
         gcc
