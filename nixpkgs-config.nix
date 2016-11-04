@@ -59,6 +59,7 @@
         vim_configurable
         wget
         which
+        xsel
         zip
       ];
     };
