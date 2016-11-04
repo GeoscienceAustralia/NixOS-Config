@@ -26,7 +26,7 @@
     wireless.enable = true;
   };
 
-  # networking.proxy.default = "http://proxy.inno.lan:3128";
+  networking.proxy.default = "http://proxy.inno.lan:3128";
 
   time.timeZone = "Australia/Sydney";
 
@@ -47,6 +47,7 @@
 
   environment.systemPackages = with pkgs; [
     systemToolsEnv
+    awsEnv
     javaEnv
     pythonEnv
     dmenu
