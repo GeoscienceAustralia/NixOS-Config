@@ -6,8 +6,8 @@
 
 let
   user = {
-    username = "guest";
-    unumber = "u00000";
+    username = "heya";
+    unumber = "u72776";
   };
 
 in
@@ -20,7 +20,7 @@ in
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       # ../../mixins/postgres/postgres-service.nix
-      # ../../mixins/java-env.nix
+      ../../mixins/java-env.nix
     ];
 
   virtualisation.docker.enable = true;
