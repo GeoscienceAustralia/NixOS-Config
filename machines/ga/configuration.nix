@@ -6,7 +6,7 @@
 
 let
   user = {
-    username = "guest";
+    username = "antoine";
     unumber = "u00000";
   };
 
@@ -31,7 +31,7 @@ in
   boot.loader.grub.device = "/dev/sda";
 
   networking.hostName = "ga";
-  networking.proxy.default = "http://sun-web-intdev.ga.gov.au:2710";
+  # networking.proxy.default = "http://sun-web-intdev.ga.gov.au:2710";
   # networking.proxy.default = "http://localhost:3128";
 
   time.timeZone = "Australia/Canberra";
@@ -85,8 +85,8 @@ in
   };
 
   # Enable the KDE Desktop Environment.
-  # services.xserver.displayManager.kdm.enable = true;
-  # services.xserver.desktopManager.kde4.enable = true;
+  services.xserver.displayManager.kdm.enable = true;
+  services.xserver.desktopManager.kde5.enable = true;
 
   # Define your user account. Don't forget to change your password.
   users.extraUsers = {
