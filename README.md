@@ -51,7 +51,13 @@ At GA: https://github.com/GeoscienceAustralia/nixos-config/network
 
 Globally: http://www.google.com/search?q=github+configuration.nix
 
-## Keeping Up-to-date
+### Read about Nix and NixOS
+
+* [Nix PhD thesis](http://grosskurth.ca/bib/2006/dolstra-thesis.pdf)
+* [Nix Manual](https://nixos.org/nix/)
+* [NixOS Manual](https://nixos.org/nixos/manual/)
+
+### Keep Up-to-date
 
 Periodically, you can rebase your branch onto the latest changes from master.
 
