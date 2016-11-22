@@ -59,6 +59,7 @@
     xorg.xbacklight
     squirrelsql
     slack
+    notify-osd
   ];
 
   fonts = {
