@@ -24,6 +24,12 @@
   networking = {
     hostName = "io";
     wireless.enable = true;
+
+    nat = {
+      enable = true;
+      internalInterfaces = ["ve-+"];
+      externalInterface = "wlp4s0";
+    };
   };
 
   networking.proxy.default = "http://proxy.inno.lan:3128";
