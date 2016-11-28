@@ -79,7 +79,8 @@ pkgs.vmTools.runInLinuxVM (
       mkdir -p /mnt/nix/store
       echo "copying everything (will take a while)..."
       set -f
-      cp -prd $storePaths /mnt/nix/store/
+      # ${pkgs.rsync}/bin/rsync -ah --info=progress2 $storePaths /mnt/nix/store/
+      cp -rpd $storePaths /mnt/nix/store/
 
       # Register the paths in the Nix database.
       printRegistration=1 perl ${pkgs.pathsFromGraph} /tmp/xchg/closure | \
