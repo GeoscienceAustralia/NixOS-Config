@@ -1,0 +1,18 @@
+machine:
+    pre:
+        - curl https://nixos.org/nix/install | sh
+        - echo ". /home/ubuntu/.nix-profile/etc/profile.d/nix.sh" >> ~/.bashrc
+        - nix-channel --add https://nixos.org/channels/nixos-16.09 nixpkgs
+        - nix-channel --update
+
+test:
+    override:
+        - nix-build release.nix -A ova:
+            timeout: 4800 # seconds
+
+deployment:
+    staging:
+        branch: master
+        commands:
+            - nix-env -iA nixpkgs.awscli
+            - aws s3 cp result/*.ova s3://geodesy-nixos --acl public-read
