@@ -1,4 +1,6 @@
-# nixos-config
+[![CircleCI](https://circleci.com/gh/GeoscienceAustralia/NixOS-Config/tree/master.svg?style=svg)](https://circleci.com/gh/GeoscienceAustralia/NixOS-Config/tree/master)
+
+# NixOS-Config
 
 ## About
 
