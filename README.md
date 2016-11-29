@@ -1,6 +1,6 @@
-[![CircleCI](https://circleci.com/gh/GeoscienceAustralia/NixOS-Config/tree/master.svg?style=svg)](https://circleci.com/gh/GeoscienceAustralia/NixOS-Config/tree/master)
+[![CircleCI](https://circleci.com/gh/GeoscienceAustralia/NixOS-Machines/tree/master.svg?style=svg)](https://circleci.com/gh/GeoscienceAustralia/NixOS-Machines/tree/master)
 
-# NixOS-Config
+# NixOS Machines
 
 ## About
 
@@ -26,7 +26,7 @@ $ VirtualBox --startvm <vmname|uuid>
 ```
 $ ssh -p 4022 guest@localhost           # password is "change-me"
 $ cd /etc/nixos
-$ git clone https://github.com/GeoscienceAustralia/nixos-config .
+$ git clone https://github.com/GeoscienceAustralia/NixOS-Machines .
 $ ln -s machines/ga/configuration.nix
 $ git checkout -b <your-branch>
 $ vim configuration.nix                 # set your username, customise the configuration
@@ -40,7 +40,7 @@ $ ssh-keygen                            # generate your private and public SSH k
 # switch to SSH
 $ cd /etc/nixos
 $ git remote remove origin
-$ git remote add origin git@github.com:GeoscienceAustralia/nixos-config
+$ git remote add origin git@github.com:GeoscienceAustralia/NixOS-Machines
 
 # commit and push to GitHub
 $ git add machines/ga/configuration.nix
@@ -49,7 +49,7 @@ $ git push -u origin <your-branch>      # push your branch to GitHub
 ```
 
 ### Study other developers' configurations
-At GA: https://github.com/GeoscienceAustralia/nixos-config/network
+At GA: https://github.com/GeoscienceAustralia/NixOS-Machines/network
 
 Globally: http://www.google.com/search?q=github+configuration.nix
 
