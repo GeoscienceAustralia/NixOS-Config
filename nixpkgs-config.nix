@@ -43,6 +43,7 @@
         ctags
         file
         firefox
+        fzf
         gcc
         git
         gitAndTools.hub
