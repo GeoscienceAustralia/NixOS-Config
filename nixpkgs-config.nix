@@ -66,6 +66,7 @@
         gnumake
         inetutils
         keychain
+        neovim
         nix-prefetch-scripts
         nix-repl
         nload
