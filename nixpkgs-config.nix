@@ -59,7 +59,7 @@
         ctags
         file
         fzf
-        firefox-beta-bin # compiled with gtk3
+        firefox-bin
         gcc
         git
         gitAndTools.hub
