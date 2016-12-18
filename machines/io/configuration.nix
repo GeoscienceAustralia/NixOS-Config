@@ -55,7 +55,6 @@
     systemToolsEnv
     awsEnv
     javaEnv
-    pythonEnv
     dmenu
     haskellPackages.X11
     haskellPackages.xmobar
