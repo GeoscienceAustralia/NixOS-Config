@@ -45,7 +45,7 @@ ova =
           VBoxManage storagectl "$vmName" --name SATA --add sata --portcount 4 --bootable on --hostiocache on
           VBoxManage storageattach "$vmName" --storagectl SATA --port 0 --device 0 --type hdd \
             --medium disk.vdi
-          VBoxManage modifyvm "$vmName" --natpf1 "guestssh,tcp,,4022,,22"
+          VBoxManage modifyvm "$vmName" --natpf1 "guestssh,tcp,,2222,,22"
 
           echo "exporting VirtualBox VM..."
           mkdir -p $out
