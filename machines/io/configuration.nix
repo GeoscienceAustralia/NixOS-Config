@@ -65,6 +65,7 @@
     squirrelsql
     slack
     notify-osd
+    neovim
   ];
 
   fonts = {
@@ -78,7 +79,12 @@
     ];
   };
 
-  programs.ssh.startAgent = true;
+  programs = {
+    bash.shellAliases = {
+      "vi" = "nvim";
+    };
+    ssh.startAgent = true;
+  };
 
   services.upower.enable = true;
   services.locate.enable = true;
