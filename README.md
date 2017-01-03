@@ -24,7 +24,7 @@ $ VirtualBox --startvm <vmname|uuid>
 ```
 ### Login and customise the VM
 ```
-$ ssh -p 4022 guest@localhost           # password is "change-me"
+$ ssh -p 2222 guest@localhost           # password is "change-me"
 $ cd /etc/nixos
 $ git clone https://github.com/GeoscienceAustralia/NixOS-Machines .
 $ ln -s machines/ga/configuration.nix
