@@ -50,7 +50,10 @@ ova =
           echo "exporting VirtualBox VM..."
           mkdir -p $out
           fn="$out/nixos-${config.system.nixosLabel}-${pkgs.stdenv.system}.ova"
+          vagrantBox="$out/nixos-${config.system.nixosLabel}-${pkgs.stdenv.system}.box"
           VBoxManage export "$vmName" --output "$fn"
+
+          ${pkgs.vagrant}/bin/vagrant package --base "$vmName" --out "$vagrantBox"
         '';
     };
 }
