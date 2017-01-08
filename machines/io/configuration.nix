@@ -86,6 +86,11 @@
     ssh.startAgent = true;
   };
 
+  services.atd = {
+    enable = true;
+    allowEveryone = true;
+  };
+
   services.upower.enable = true;
   services.locate.enable = true;
 
