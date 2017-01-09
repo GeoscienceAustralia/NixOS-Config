@@ -16,4 +16,5 @@ deployment:
         commands:
             - nix-env -iA nixpkgs.awscli
             - aws s3 cp result/*.ova s3://geodesy-nixos --acl public-read
+            - aws s3 cp result/*.box s3://geodesy-nixos --acl public-read
             - ./upload-to-atlas.py lbodor ga-base result/*.box
