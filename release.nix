@@ -53,7 +53,7 @@ ova =
           vagrantBox="$out/nixos-${config.system.nixosLabel}-${pkgs.stdenv.system}.box"
           VBoxManage export "$vmName" --output "$fn"
 
-          ${pkgs.vagrant}/bin/vagrant package --base "$vmName" --out "$vagrantBox"
+          ${pkgs.vagrant}/bin/vagrant package --base "$vmName" --vagrantfile ${./Vagrantfile} --out "$vagrantBox"
         '';
     };
 }
