@@ -14,8 +14,8 @@ http://s3-ap-southeast-2.amazonaws.com/geodesy-nixos/.
 
 ### Download and import the latest OVF appliance
 ```
-$ wget http://s3-ap-southeast-2.amazonaws.com/geodesy-nixos/nixos-16.09.XXX-x86_64-linux.ova
-$ VBoxManager import nixos-16.09.XXX-x86_64-linux.ova
+$ wget http://s3-ap-southeast-2.amazonaws.com/geodesy-nixos/nixos-17.03preXXX-x86_64-linux.ova
+$ VBoxManager import nixos-17.03preXXX-x86_64-linux.ova
 ```
 ### Start the VM
 ```
@@ -77,8 +77,8 @@ $ sudo nix-channel --list               # check your nixpkgs channel subscriptio
 $ sudo nixos-rebuild switch --upgrade   # update all installed packages
 ```
 
-Current nixpkgs substriction is to the latest stable channel, `nixos-16.09`.
+Current nixpkgs substriction is to the unstable channel, `nixos-unstable`.
 
 ```
-$ sudo nix-channel --add https://nixos.org/channels/nixos-16.09 nixos
+$ sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos
 ```

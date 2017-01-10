@@ -2,8 +2,6 @@ machine:
     pre:
         - curl https://nixos.org/nix/install | sh
         - echo ". /home/ubuntu/.nix-profile/etc/profile.d/nix.sh" >> ~/.bashrc
-        - nix-channel --add https://nixos.org/channels/nixos-16.09 nixpkgs
-        - nix-channel --update
 
 test:
     override:
