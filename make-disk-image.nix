@@ -27,6 +27,8 @@
 , name ? "nixos-disk-image"
 
 , format ? "raw"
+
+, pwd
 }:
 
 with lib;
@@ -39,6 +41,7 @@ pkgs.vmTools.runInLinuxVM (
           diskImage=$out/nixos.${if format == "qcow2" then "qcow2" else "img"}
           ${pkgs.vmTools.qemu}/bin/qemu-img create -f ${format} $diskImage "${toString diskSize}M"
           mv closure xchg/
+          cp -r ${pkgs.copyPathToStore (toString pwd)} xchg/etc-nixos
         '';
       buildInputs = [ pkgs.utillinux pkgs.perl pkgs.e2fsprogs pkgs.parted ];
       exportReferencesGraph =
@@ -102,10 +105,9 @@ pkgs.vmTools.runInLinuxVM (
       ln -s ${config.system.build.binsh}/bin/sh /mnt/bin/sh
 
       # Install a configuration.nix.
-      mkdir -p /mnt/etc/nixos
-      ${optionalString (configFile != null) ''
-        cp ${configFile} /mnt/etc/nixos/configuration.nix
-      ''}
+      cp -r /tmp/xchg/etc-nixos /mnt/etc/nixos
+      (cd /mnt/etc/nixos && ln -sf machines/ga/configuration.nix)
+      chmod -R u+w /mnt/etc/nixos
 
       chown -R 0 /mnt/nix/store
       chgrp -R 0 /mnt/nix/store

@@ -25,11 +25,7 @@ $ VirtualBox --startvm <vmname|uuid>
 ### Login and customise the VM
 ```
 $ ssh -p 2222 guest@localhost           # password is "change-me"
-$ cd /etc/nixos
-$ git clone https://github.com/GeoscienceAustralia/NixOS-Machines .
-$ ln -s machines/ga/configuration.nix
-$ git checkout -b <your-branch>
-$ vim configuration.nix                 # set your username, customise the configuration
+$ vim /etc/nixos/configuration.nix      # set your username, customise the configuration
 $ sudo nixos-rebuild switch             # build the new configuration and switch to it
 $ sudo su - <username>                  # login as your new user
 $ passwd                                # change your password
@@ -43,6 +39,7 @@ $ git remote remove origin
 $ git remote add origin git@github.com:GeoscienceAustralia/NixOS-Machines
 
 # commit and push to GitHub
+$ git checkout -b <your-branch>
 $ git add machines/ga/configuration.nix
 $ git commit -m"Customise"
 $ git push -u origin <your-branch>      # push your branch to GitHub
@@ -64,9 +61,9 @@ Globally: http://www.google.com/search?q=github+configuration.nix
 Periodically, you can rebase your branch onto the latest changes from master.
 
 ```
-$ git fetch origin master:master        # Pull in the latest changes from master
+$ git fetch origin master:master        # pull in the latest changes from master
 $ git rebase master                     # rebase your branch
-$ sudo nixos-rebuild switch             # Switch to the new configuration
+$ sudo nixos-rebuild switch             # switch to the new configuration
 $ git push -f                           # push your rebased branch to GitHub.
 ```
 

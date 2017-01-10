@@ -1,5 +1,7 @@
 # origin: https://github.com/NixOS/nixpkgs/blob/ea9d390c1af028dcb8dfc630095ae7caafeba135/nixos/release.nix
 
+{ pwd }:
+
 {
 
 # A bootable VirtualBox virtual appliance as an OVA file (i.e., packaged OVF).
@@ -18,7 +20,7 @@ ova =
 
   in
     with (import <nixpkgs> {}); makeDiskImage {
-      inherit pkgs lib config;
+      inherit pkgs lib config pwd;
 
       name = "nixos-ova-${config.system.nixosLabel}-${pkgs.stdenv.system}";
       diskSize = 100 * 1024; # MiB

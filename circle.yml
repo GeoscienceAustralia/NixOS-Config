@@ -5,7 +5,7 @@ machine:
 
 test:
     override:
-        - nix-build release.nix -A ova:
+        - nix-build release.nix -A ova --argstr pwd $(pwd):
             timeout: 4800 # seconds
 
 deployment:
