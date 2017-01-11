@@ -30,9 +30,10 @@ in
   boot.loader.grub.version = 2;
   boot.loader.grub.device = "/dev/sda";
 
-  networking.hostName = "ga";
+  networking.hostName = "egeodesy";
   networking.proxy.default = "http://sun-web-intdev.ga.gov.au:2710";
   # networking.proxy.default = "http://localhost:3128";
+  networking.firewall.enable = false;
 
   time.timeZone = "Australia/Canberra";
 
@@ -71,9 +72,6 @@ in
     forwardX11 = true;
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
   # services.tomcat = {
   #   enable = true;
   #   package = pkgs.tomcat8;
@@ -84,14 +82,16 @@ in
     wheelNeedsPassword = false;
   };
 
-  # Enable the KDE Desktop Environment.
-  # services.xserver.displayManager.kdm.enable = true;
-  # services.xserver.desktopManager.kde4.enable = true;
+  # Enable the X11 windowing system.
+  services.xserver = {
+    enable = true;
+    desktopManager.xfce.enable = true;
+  };
 
   # Define your user account. Don't forget to change your password.
   users.extraUsers = {
     ${user.username} = {
-      password = "change-me";
+      password = "demo";
       isNormalUser = true;
       uid = 1000;
       extraGroups = [ "wheel" "docker" ];

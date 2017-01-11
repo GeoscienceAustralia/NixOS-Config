@@ -14,4 +14,5 @@ if [ "${http_proxy}" != "${new_proxy}" ]; then
     export NIX_REMOTE=""
     nix-build -A system "<nixpkgs/nixos>"
     nixos-rebuild switch
+    rm result
 fi

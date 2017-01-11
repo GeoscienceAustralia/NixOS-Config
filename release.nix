@@ -11,8 +11,8 @@ ova =
     nixpkgsCheckout = defaultPkgs.fetchFromGitHub {
       owner = "NixOS";
       repo = "nixpkgs-channels";
-      rev = "9ab4d31";
-      sha256 = "1nmcpfxi85kpkd906jj4m26bz8kxp47ijk2sswksypkyq22r83fw";
+      rev = "fd1dbe551cf6338c5f4e4f80c2f5dde9f9e6a271"; # nixpkgs-channels/nixos-16.09 - 2017-01-10
+      sha256 = "1jfpf7wg6pfmhngj3zy2m54qs0f11dyrnfmnmnv20a1pzb4xdnkl";
     };
     pinnedPkgs = import nixpkgsCheckout {};
     lib = pinnedPkgs.pkgs.lib;
@@ -56,7 +56,7 @@ ova =
           VBoxManage createvm --name "$vmName" --register \
             --ostype ${if pkgs.stdenv.system == "x86_64-linux" then "Linux26_64" else "Linux26"}
           VBoxManage modifyvm "$vmName" \
-            --memory 4096 --acpi on --vram 32 \
+            --memory 8192 --acpi on --vram 32 \
             ${lib.optionalString (pkgs.stdenv.system == "i686-linux") "--pae on"} \
             --nictype1 virtio --nic1 nat \
             --audiocontroller ac97 --audio alsa \

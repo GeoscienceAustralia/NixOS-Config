@@ -2,6 +2,9 @@ machine:
     pre:
         - curl https://nixos.org/nix/install | sh
         - echo ". /home/ubuntu/.nix-profile/etc/profile.d/nix.sh" >> ~/.bashrc
+        - nix-channel --remove nixpkgs
+        - nix-channel --remove https://nixos.org/channels/nixos-unstable nixos
+        - nix-channel --update
 
 test:
     override:
