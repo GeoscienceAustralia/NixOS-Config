@@ -26,11 +26,21 @@ ova =
         ];
     }).config;
 
+    _nixosMachinesRev = pinnedPkgs.pkgs.runCommand "dummy" {} 
+      ''
+        mkdir $out
+        cd ${pinnedPkgs.pkgs.copyPathToStore (toString pwd)}
+        rev=$(${pinnedPkgs.pkgs.git}/bin/git rev-parse HEAD | cut -c -7)
+        echo \"$rev\" > $out/rev.nix
+      '';
+
+    nixosMachinesRev = import (lib.concatStrings [_nixosMachinesRev "/rev.nix"]);
+
   in
     with pinnedPkgs; makeDiskImage {
       inherit pkgs lib config pwd;
 
-      name = "nixos-ova-${config.system.nixosLabel}-${pkgs.stdenv.system}";
+      name = "nixos-ova-${nixosMachinesRev}-${pkgs.stdenv.system}";
       diskSize = 100 * 1024; # MiB
 
       postVM =
@@ -42,7 +52,7 @@ ova =
           echo "creating VirtualBox VM..."
           export HOME=$PWD
           export PATH=${pkgs.virtualbox}/bin:$PATH
-          vmName="NixOS ${config.system.nixosLabel} (${pkgs.stdenv.system})"
+          vmName="NixOS ${nixosMachinesRev} (${pkgs.stdenv.system})"
           VBoxManage createvm --name "$vmName" --register \
             --ostype ${if pkgs.stdenv.system == "x86_64-linux" then "Linux26_64" else "Linux26"}
           VBoxManage modifyvm "$vmName" \
@@ -59,8 +69,8 @@ ova =
 
           echo "exporting VirtualBox VM..."
           mkdir -p $out
-          fn="$out/nixos-${config.system.nixosLabel}-${pkgs.stdenv.system}.ova"
-          vagrantBox="$out/nixos-${config.system.nixosLabel}-${pkgs.stdenv.system}.box"
+          fn="$out/nixos-${nixosMachinesRev}-${pkgs.stdenv.system}.ova"
+          vagrantBox="$out/nixos-${nixosMachinesRev}-${pkgs.stdenv.system}.box"
           VBoxManage export "$vmName" --output "$fn"
 
           ${pkgs.vagrant}/bin/vagrant package --base "$vmName" --vagrantfile ${./Vagrantfile} --out "$vagrantBox"
