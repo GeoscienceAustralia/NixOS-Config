@@ -14,8 +14,8 @@ http://s3-ap-southeast-2.amazonaws.com/geodesy-nixos/.
 
 ### Download and import the latest OVF appliance
 ```
-$ wget http://s3-ap-southeast-2.amazonaws.com/geodesy-nixos/nixos-17.03preXXX-x86_64-linux.ova
-$ VBoxManager import nixos-17.03preXXX-x86_64-linux.ova
+$ wget http://s3-ap-southeast-2.amazonaws.com/geodesy-nixos/nixos-XXX-x86_64-linux.ova
+$ VBoxManager import nixos-XXX-x86_64-linux.ova
 ```
 ### Start the VM
 ```
