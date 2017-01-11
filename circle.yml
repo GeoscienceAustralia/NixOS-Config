@@ -5,8 +5,11 @@ machine:
 
 test:
     override:
-        - nix-build release.nix -A ova --argstr pwd $(pwd):
-            timeout: 4800 # seconds
+        # - nix-build release.nix -A ova --argstr pwd $(pwd):
+            # timeout: 4800 # seconds
+        # - vagrant box add result/*.box --name ga-base
+        - vagrant init lbodor/ga-base
+        - vagrant up
 
 deployment:
     staging:
