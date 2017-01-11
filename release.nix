@@ -7,19 +7,27 @@
 # A bootable VirtualBox virtual appliance as an OVA file (i.e., packaged OVF).
 ova =
   let
-    evalConfig = import <nixpkgs/nixos/lib/eval-config.nix>;
-    # makeDiskImage = import <nixpkgs/nixos/lib/make-disk-image.nix>;
+    defaultPkgs = import <nixpkgs> {};
+    nixpkgsCheckout = defaultPkgs.fetchFromGitHub {
+      owner = "NixOS";
+      repo = "nixpkgs-channels";
+      rev = "9ab4d31";
+      sha256 = "1nmcpfxi85kpkd906jj4m26bz8kxp47ijk2sswksypkyq22r83fw";
+    };
+    pinnedPkgs = import nixpkgsCheckout {};
+    lib = pinnedPkgs.pkgs.lib;
+    evalConfig = import (lib.concatStrings [nixpkgsCheckout "/nixos/lib/eval-config.nix"]);
     makeDiskImage = import ./make-disk-image.nix;
 
     config = (evalConfig {
       modules = [
-           <nixpkgs/nixos/modules/installer/cd-dvd/channel.nix>
+           (lib.concatStrings [nixpkgsCheckout "/nixos/modules/installer/cd-dvd/channel.nix"])
           ./machines/ga/configuration.nix
         ];
     }).config;
 
   in
-    with (import <nixpkgs> {}); makeDiskImage {
+    with pinnedPkgs; makeDiskImage {
       inherit pkgs lib config pwd;
 
       name = "nixos-ova-${config.system.nixosLabel}-${pkgs.stdenv.system}";
