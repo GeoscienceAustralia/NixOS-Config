@@ -45,13 +45,13 @@ ova =
 
       postVM =
         ''
-          echo "creating VirtualBox disk image..."
-          ${pkgs.vmTools.qemu}/bin/qemu-img convert -f raw -O vdi $diskImage disk.vdi
-          rm $diskImage
-
-          echo "creating VirtualBox VM..."
           export HOME=$PWD
           export PATH=${pkgs.virtualbox}/bin:$PATH
+
+          echo "creating VirtualBox pass-through disk wrapper (no copying invovled)..."
+          VBoxManage internalcommands createrawvmdk -filename disk.vmdk -rawdisk $diskImage
+
+          echo "creating VirtualBox VM..."
           vmName="NixOS ${nixosMachinesRev} (${pkgs.stdenv.system})"
           VBoxManage createvm --name "$vmName" --register \
             --ostype ${if pkgs.stdenv.system == "x86_64-linux" then "Linux26_64" else "Linux26"}
@@ -64,7 +64,7 @@ ova =
             --usb on --mouse usbtablet
           VBoxManage storagectl "$vmName" --name SATA --add sata --portcount 4 --bootable on --hostiocache on
           VBoxManage storageattach "$vmName" --storagectl SATA --port 0 --device 0 --type hdd \
-            --medium disk.vdi
+            --medium disk.vmdk
           VBoxManage modifyvm "$vmName" --natpf1 "guestssh,tcp,,2222,,22"
 
           echo "exporting VirtualBox VM..."
@@ -74,6 +74,7 @@ ova =
           VBoxManage export "$vmName" --output "$fn"
 
           ${pkgs.vagrant}/bin/vagrant package --base "$vmName" --vagrantfile ${./Vagrantfile} --out "$vagrantBox"
+          rm -v $diskImage
         '';
     };
 }
