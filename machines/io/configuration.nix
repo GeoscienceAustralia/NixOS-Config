@@ -30,6 +30,10 @@
       internalInterfaces = ["ve-+"];
       externalInterface = "wlp4s0";
     };
+    extraHosts =
+    ''
+      192.168.1.2 imac
+    '';
   };
 
   networking.proxy.default = "http://proxy.inno.lan:3128";
