@@ -17,6 +17,11 @@
       fsType = "ext4";
     };
 
+  fileSystems."/home" =
+    { device = "/dev/nvme0n1p6";
+      fsType = "ext4";
+    };
+
   fileSystems."/boot" =
     { device = "/dev/nvme0n1p1";
       fsType = "vfat";
