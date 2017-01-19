@@ -1,5 +1,3 @@
-# origin: https://github.com/NixOS/nixpkgs/blob/ea9d390c1af028dcb8dfc630095ae7caafeba135/nixos/lib/make-disk-image.nix
-
 { pkgs
 , lib
 
@@ -13,6 +11,9 @@
   # containing the root filesystem) or contain the root filesystem
   # directly.
   partitioned ? true
+
+  # Whether to invoke switch-to-configuration boot during image creation
+, installBootLoader ? true
 
 , # The root file system type.
   fsType ? "ext4"
@@ -69,55 +70,35 @@ pkgs.vmTools.runInLinuxVM (
       mkdir /mnt
       mount $rootDisk /mnt
 
-      # The initrd expects these directories to exist.
-      mkdir /mnt/dev /mnt/proc /mnt/sys
-
-      mount -o bind /proc /mnt/proc
-      mount -o bind /dev /mnt/dev
-      mount -o bind /sys /mnt/sys
-
-      # Copy all paths in the closure to the filesystem.
-      storePaths=$(perl ${pkgs.pathsFromGraph} /tmp/xchg/closure)
-
-      mkdir -p /mnt/nix/store
-      echo "copying everything (will take a while)..."
-      set -f
-      cp -prd $storePaths /mnt/nix/store/
-
-      # Register the paths in the Nix database.
-      printRegistration=1 perl ${pkgs.pathsFromGraph} /tmp/xchg/closure | \
-          chroot /mnt ${config.nix.package.out}/bin/nix-store --load-db --option build-users-group ""
-
-      # Add missing size/hash fields to the database. FIXME:
-      # exportReferencesGraph should provide these directly.
-      chroot /mnt ${config.nix.package.out}/bin/nix-store --verify --check-contents
-
-      # Create the system profile to allow nixos-rebuild to work.
-      chroot /mnt ${config.nix.package.out}/bin/nix-env --option build-users-group "" \
-          -p /nix/var/nix/profiles/system --set ${config.system.build.toplevel}
-
-      # `nixos-rebuild' requires an /etc/NIXOS.
-      mkdir -p /mnt/etc
-      touch /mnt/etc/NIXOS
-
-      # `switch-to-configuration' requires a /bin/sh
-      mkdir -p /mnt/bin
-      ln -s ${config.system.build.binsh}/bin/sh /mnt/bin/sh
-
       # Install a configuration.nix.
+      mkdir /mnt/etc
       cp -r /tmp/xchg/etc-nixos /mnt/etc/nixos
       (cd /mnt/etc/nixos && ln -sf machines/ga/configuration.nix)
       chmod -R u+w /mnt/etc/nixos
 
-      chown -R 0 /mnt/nix/store
-      chgrp -R 0 /mnt/nix/store
+      # Register the paths in the Nix database.
+      printRegistration=1 perl ${pkgs.pathsFromGraph} /tmp/xchg/closure | \
+          ${config.nix.package.out}/bin/nix-store --load-db --option build-users-group ""
 
-      # Generate the GRUB menu.
+      # Add missing size/hash fields to the database. FIXME:
+      # exportReferencesGraph should provide these directly.
+      ${config.nix.package.out}/bin/nix-store --verify --check-contents --option build-users-group ""
+
+      # In case the bootloader tries to write to /dev/sda…
       ln -s vda /dev/xvda
       ln -s vda /dev/sda
-      chroot /mnt ${config.system.build.toplevel}/bin/switch-to-configuration boot
 
-      umount /mnt/proc /mnt/dev /mnt/sys
+      # Install the closure onto the image
+      USER=root ${config.system.build.nixos-install}/bin/nixos-install \
+        --closure ${config.system.build.toplevel} \
+        --no-channel-copy \
+        --no-root-passwd \
+        ${optionalString (!installBootLoader) "--no-bootloader"}
+
+
+      # Remove /etc/machine-id so that each machine cloning this image will get its own id
+      rm -f /mnt/etc/machine-id
+
       umount /mnt
 
       # Do a fsck to make sure resize2fs works.
