@@ -31,8 +31,8 @@ in
   boot.loader.grub.device = "/dev/sda";
 
   networking.hostName = "ga";
-  networking.proxy.default = "http://sun-web-intdev.ga.gov.au:2710";
-  # networking.proxy.default = "http://localhost:3128";
+  # networking.proxy.default = "http://sun-web-intdev.ga.gov.au:2710";
+  networking.proxy.default = "http://localhost:3128";
 
   time.timeZone = "Australia/Canberra";
 
@@ -47,24 +47,25 @@ in
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
     systemToolsEnv
+    chromium
     slack
     # pythonEnv
-    # squirrelsql
+    squirrelsql
   ];
 
   # Use your own CNTLM. Set username to your u-number
   # and put your password into /etc/cntlm.password.
   # Remember to 'chmod 0600 /etc/cntlm.password'.
 
-  # services.cntlm = {
-  #   enable = true;
-  #   username = user.unumber;
-  #   domain = "PROD";
-  #   password = import /etc/cntlm.password;
-  #   proxy = ["proxy.ga.gov.au:8080"];
-  #   port = [3128];
-  #   netbios_hostname = "127.0.0.1";
-  # };
+   services.cntlm = {
+     enable = true;
+     username = user.unumber;
+     domain = "PROD";
+     password = import /etc/cntlm.password;
+     proxy = ["proxy.ga.gov.au:8080"];
+     port = [3128];
+     netbios_hostname = "127.0.0.1";
+   };
 
   services.openssh = {
     enable = true;
@@ -74,10 +75,10 @@ in
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  # services.tomcat = {
-  #   enable = true;
-  #   package = pkgs.tomcat8;
-  # };
+  services.tomcat = {
+    enable = true;
+    package = pkgs.tomcat8;
+  };
 
   security.sudo = {
     enable = true;

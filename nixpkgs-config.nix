@@ -2,15 +2,6 @@
   allowUnfree = true;
 
   packageOverrides = super: let self = super.pkgs; in with self; rec {
-    # TODO: why doesn't it work without self?
-    self.firefox = {
-        enableAdobeFlash = true;
-    };
-
-    # TODO: move out
-    # firefox-unwrapped = super.firefox-unwrapped.override {
-    #     enableGTK3 = true;
-    # };
 
     squirrelsql = super.callPackage ./pkgs/squirrelsql {};
 
@@ -37,13 +28,23 @@
       };
     };
 
+    idea-community = buildIdea rec {
+      name = "idea-community-${version}";
+      version = "2016.3";
+      description = "Integrated Development Environment (IDE) by Jetbrains, community edition";
+      license = stdenv.lib.licenses.asl20;
+      src = fetchurl {
+        url = "https://download.jetbrains.com/idea/ideaIC-${version}.tar.gz";
+        sha256 = "1bp2a1x8nl5flklf160n7ka5clnb0xx9gwv5zd9li2bsf04zlzf3";
+      };
+      wmClass = "jetbrains-idea-ce";
+    };
+
     systemToolsEnv = with super; buildEnv {
       name = "systemToolsEnv";
       paths = [
         ctags
         file
-        firefox
-        fzf
         gcc
         git
         gitAndTools.hub
@@ -72,7 +73,7 @@
         maven
         eclipse-ee-46
         # idea.idea-ultimate
-        # idea.idea-community
+        idea.idea-community
         gradle
       ];
     };
