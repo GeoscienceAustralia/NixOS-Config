@@ -70,6 +70,7 @@
     slack
     notify-osd
     neovim
+    vivaldi
   ];
 
   fonts = {
