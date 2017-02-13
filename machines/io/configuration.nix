@@ -111,7 +111,7 @@
   };
 
   services.tomcat = {
-    enable = true;
+    enable = false;
     package = pkgs.tomcat8;
   };
 
