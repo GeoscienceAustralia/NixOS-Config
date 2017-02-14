@@ -14,6 +14,12 @@
     efi.canTouchEfiVariables = true;
   };
 
+  # See: github.com/NixOS/nixpkgs/issues/22470
+  boot.earlyVconsoleSetup = true;
+
+  # https://github.com/NixOS/nixpkgs/issues/22472
+  boot.kernelParams = ["systemd.legacy_systemd_cgroup_controller=yes"];
+
   boot.initrd.checkJournalingFS = false;
 
   virtualisation.docker.enable = true;
