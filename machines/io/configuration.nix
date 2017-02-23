@@ -76,6 +76,7 @@
     slack
     notify-osd
     neovim
+    neovim-remote
     vivaldi
   ];
 
