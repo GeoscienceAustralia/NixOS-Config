@@ -31,8 +31,8 @@ in
   boot.loader.grub.device = "/dev/sda";
 
   networking.hostName = "ga";
-  # networking.proxy.default = "http://sun-web-intdev.ga.gov.au:2710";
-  networking.proxy.default = "http://localhost:3128";
+  networking.proxy.default = "http://sun-web-intdev.ga.gov.au:2710";
+  # networking.proxy.default = "http://localhost:3128";
 
   time.timeZone = "Australia/Canberra";
 
@@ -74,6 +74,12 @@ in
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
+
+  #use the ice window manager
+  services.xserver.windowManager.icewm.enable = true;
+
+  #use the sddm display manager
+  services.xserver.displayManager.sddm.enable = true;
 
   services.tomcat = {
     enable = true;
