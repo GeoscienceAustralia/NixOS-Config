@@ -71,6 +71,7 @@
     haskellPackages.xmonad
     haskellPackages.xmonad-contrib
     haskellPackages.xmonad-extras
+    pandoc
     xorg.xbacklight
     squirrelsql
     slack
