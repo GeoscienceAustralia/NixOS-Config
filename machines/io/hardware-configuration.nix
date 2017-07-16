@@ -27,10 +27,12 @@
       fsType = "vfat";
     };
 
-  fileSystems."/dos" =
-    { device = "/dev/nvme0n1p3";
-      fsType = "ntfs-3g";
-    };
+  # Don't mount dos automatically: it can halt the boot process,
+  # if not dismounted cleanly by windows.
+  # fileSystems."/dos" =
+  #   { device = "/dev/nvme0n1p3";
+  #     fsType = "ntfs-3g";
+  #   };
 
   swapDevices = [ ];
 
