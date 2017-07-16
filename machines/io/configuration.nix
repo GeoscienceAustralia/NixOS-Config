@@ -140,6 +140,6 @@
   system.stateVersion = "17.03";
   system.autoUpgrade = {
     enable = true;
-    dates = "11:24";
+    dates = "9:30";
   };
 }
