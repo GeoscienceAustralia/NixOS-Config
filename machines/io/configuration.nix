@@ -75,6 +75,7 @@
     xorg.xbacklight
     squirrelsql
     slack
+    texEnv
     notify-osd
     neovim
     neovim-remote
