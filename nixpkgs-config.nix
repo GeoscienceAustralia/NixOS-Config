@@ -12,6 +12,10 @@
     #     enableGTK3 = true;
     # };
 
+    texEnv = self.texlive.combine {
+      inherit (self.texlive) scheme-basic;
+    };
+
     squirrelsql = super.callPackage ./pkgs/squirrelsql {};
 
     eclipse-ee-452 = super.eclipses.buildEclipse {
