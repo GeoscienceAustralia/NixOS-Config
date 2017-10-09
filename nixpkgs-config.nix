@@ -105,6 +105,7 @@
       name = "awsEnv";
       paths = [
         awscli
+        awless
       ];
     };
 
