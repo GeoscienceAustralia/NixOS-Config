@@ -106,6 +106,7 @@
       paths = [
         awscli
         awless
+        terraform
       ];
     };
 
