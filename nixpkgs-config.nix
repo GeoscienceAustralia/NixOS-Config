@@ -70,9 +70,9 @@
       paths = [
         openjdk
         maven
-        eclipse-ee-46
-        # idea.idea-ultimate
-        idea.idea-community
+        ###eclipse-ee-46
+        ###idea.idea-ultimate
+        ##        idea.idea-community
         gradle
       ];
     };
